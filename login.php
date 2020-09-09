@@ -1,82 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+include("config.php");
+extract($_REQUEST);
+$i=$_REQUEST['itemno'];
 
-  <head>
+if(isset($sub))
+{
+$id=$_REQUEST['t1'];
+$pass=$_REQUEST['p1'];
+  $sel=mysqli_query($conn,"select id,pass from register where id='$id'");
+  $arr=mysqli_fetch_array($sel);
+if(($arr['id']==$id) and( $arr['pass']==$pass))
+  {
+   $_SESSION['eid']=$id;
+echo "<script>location.href='order.php?itemno=$i'</script>";
+   }
+else
+{
+$er="id and password do not match";
+}
+}
+?>
+<html>
+<div><br/><center><h2><font face="Lucida Handwriting" size="+1" color="#00CCFF">Login your Account</font></h2></center></div>
+<div>
+<div style="width:25%;float:right">
+<img src="usepics/7.jpg">
+</div>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Login</title>
-
-    <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="css/sb-new.css">
-  </head>
-
-  <body class="bg-dark">
-
-    <div class="container">
-      <div class="card card-login mx-auto mt-5">
-        <div class="card-header"><h3> Login</h3></div>
-        <div class="card-body">
-         <?php session_start();
-          if (isset($_GET['error'])) {
-            if ($_GET["error"]=="wrongpwd") {
-              echo '<p class="signuperror">Wrong password</p>';
-            }
-            
-            } 
-             
-         
-           ?>
-          <form action="includes/signin.php" method="post">
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="text" id="inputEmail" name="mailuid" class="form-control" placeholder="Email/Username" required autofocus="autofocus">
-                <label for="inputEmail">Email/Username</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" name="pwd" class="form-control" placeholder="Password" >
-                <label for="inputPassword">Password</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me">
-                  Remember Password
-                </label>
-              </div>
-            </div>
-            <button class="btn btn-primary btn-block" name="login-submit">Login</button>
-          </form>
-          <div class="text-center">
-            <a class="d-block small mt-3" href="register.php">Signup</a>
-            <a class="d-block small mt-3" href="index.php">Home</a>
-          </div>
+<br><br>
+<div style="width:70%;float:right" align="center" >
+<center><fieldset style="background:#CC99CC;width:50%">
+<br><br>
+<table width="244" border="0" align="center">
+<form method="post">
+<tr><td colspan="2"><?php echo "<font color='green'>$er</font>";?></td></tr>
+  <tr>
+    <td width="90"><div align="center"><font size="+1" face="Comic Sans MS">UserID:</font></div></td>
+    <td width="144"><label>
+      <input name="t1" type="text" id="t1">
+    </label></td>
+  </tr>
+  <tr>
+    <td><div align="center"><font size="+1" face="Comic Sans MS">Password:</font></div></td>
+    <td><input name="p1" type="password" id="p1"></td>
+  </tr>
+  <tr>
+    <td><label>
+      <div align="center">
+<input name="sub" type="submit" value="Login">
         </div>
-      </div>
-    </div>
+    </label></td>
+    <td><strong><a href="index.php?con=11"><font color="#993333" size="+1" face="Bradley Hand ITC">Sign Up</font></a></strong> </td>
+  </tr>
+  <tr>
+    <td height="37" colspan="2"><div align="center"><a href="#"><font size="+1" face="Bradley Hand ITC"><strong>Forgot your Password? </strong></font></a></div></td>
+    </tr>
+  </form>
+</table>
+</fieldset></center>
+</div>
 
- <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</div>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!--<div style="width:100%;float:left"><center><b>Copyright&copy;Priya Gupta</b></center></div>
+</div>-->
 
-  </body>
-
+</body>
 </html>

@@ -1,18 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cz"><head>
-
-<meta http-equiv="Content-language" content="cs">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="description" content=" ">
-<meta name="keywords" content=" ">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<meta name="author" content="Kl?ra Frolichov?, Sunlight webdesign">
-<meta name="Copyright" content="Kl?ra Frolichov?, Sunlight webdesign 2007">
-<meta name="design" content="Sunlight webdesign - http://www.sunlight.cz, info@sunlight.cz">
-<link rel="stylesheet" type="text/css" href="default.css" title="default">
-
-</head>
 <?php
 session_start();
 include("config.php");
@@ -50,10 +35,7 @@ header("location:index.php");
 	
 ?>
 <body>
-<div id="WholePage">
-<div id="Inner">
-<div id="Container" style="border:groove;border-color:red">
-<div id="CentralPart">
+<div>
 <div><br/><center><h2><font face="Lucida Handwriting" size="+2" color="#00CCFF">Welcome 
 <?php
 $sel=mysqli_query($conn,"select * from register where id='$id'");
@@ -67,7 +49,7 @@ $sel=mysqli_query($conn,"select * from register where id='$id'");
 <br><br><br><br>
 <img src="usepics/7.jpg">
 </div>
-
+<center><div style="width:70%;float:right" align="center">
 <center><h2><font face="Lucida Handwriting" size="+1" color="#00CCFF">Order Form</font></h2></center>
 <fieldset style="background:#CC99CC;width:50%">
 <br><br>
@@ -148,21 +130,10 @@ $sel=mysqli_query($conn,"select * from register where id='$id'");
     </label></td>
     </tr>
 </table>
-</form>
+ </form>
 </fieldset>
 </div>
+</center>
 
 </div>
-
-
-
-
-<div id="Bottom">
-<p class="down"><b>Copyright &copy; Fashion Shop, Design by:Priya Gupta</b></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</body></html>
+</body>
